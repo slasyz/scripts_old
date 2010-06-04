@@ -4,6 +4,7 @@
 #http://ws.audioscrobbler.com/2.0/\?method\=group.getMembers\&api_key\=e44f024998b4ccf7215bbc4242a2d00a\&group\=Juick.com
 
 from functions import *
+from urllib2 import HTTPError
 import sys
 
 if len(sys.argv) < 4:
@@ -40,3 +41,5 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         print('Выход по Ctrl+C.')
+    except HTTPError:
+        print('Группы или пользователя не существует.')
