@@ -1,3 +1,4 @@
 1) lastfm.py - ищет пользователей в определённой группе, чья музыкальная совместимость с вами наибольшая
-   Запускать так: "./lastfm.py USER GROUP COUNT"
-
+   ./lastfm.py USER GROUP COUNT
+2) google.py - поиск в Google.
+   ./google.py COUNT TEXT
