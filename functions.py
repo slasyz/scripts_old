@@ -5,20 +5,10 @@
 # Лицензия: GNU GPL v3 ( http://www.gnu.org/licenses/gpl.html )
 
 import os, re, urllib2, pycurl
-from xml.dom.minidom import parseString
 from datetime import datetime
 
 from urllib import urlencode, unquote_plus
 from StringIO import StringIO
-
-API_KEY = 'e44f024998b4ccf7215bbc4242a2d00a'
-
-def getText(nodelist):
-    rc = []
-    for node in nodelist:
-        if node.nodeType == node.TEXT_NODE:
-            rc.append(node.data)
-    return rc
 
 def notify(title, text):
     link_regexp = re.compile(r'(http://[A-Za-z0-9_/\.]*)')
@@ -58,19 +48,3 @@ def upload(url, params = {}, cookies = '', headers = []): # 1 - headers; 2 - bod
             return '304'
         else:
             return text.getvalue()
-
-def get_members(group):
-    xml = upload('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s'%(API_KEY, group))
-    obj = parseString(xml)
-    num = int(obj.getElementsByTagName('members')[0].getAttribute('totalPages'))
-    rc = []
-    for page in xrange(num):
-        xml = upload('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s&page=%s'%(API_KEY, group, page))
-        obj = parseString(xml)
-        for node in obj.getElementsByTagName('name'):
-            rc.append(node.childNodes[0].data)
-    return rc
-    
-def get_score(user1, user2):
-    xml = upload('http://ws.audioscrobbler.com/2.0/?method=tasteometer.compare&api_key=%s&limit=0&type1=user&type2=user&value1=%s&value2=%s'%(API_KEY, user1, user2))
-    return parseString(xml).getElementsByTagName('score')[0].childNodes[0].data
