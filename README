@@ -1,5 +1,5 @@
 1) lastfm.py - ищет пользователей в определённой группе, чья 
-               музыкальная совместимость с вами наибольшая.
+   музыкальная совместимость с вами наибольшая.
    ./lastfm.py USER GROUP COUNT
    Зависимости: pycurl
 
@@ -10,10 +10,7 @@
 3) yamaps.py - определяет координаты заданноо объекта.
    ./yamaps.py OBJECT
    Зависимости: pycurl
-<<<<<<< HEAD
 
-=======
->>>>>>> 64ebecbf5597c45f0544f81aa697941b8b40515c
 4) twitter.py - отправляет сообщение в Twitter.
    ./twitter.py -u USERNAME -p PASSWORD MESSAGE
    Зависимости: pycurl
