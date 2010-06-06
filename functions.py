@@ -15,7 +15,7 @@ def notify(title, text):
     text = re.sub(link_regexp, r'<a href="\1">\1</a>', text)
     os.popen("notify-send -t 10000 -i '/usr/share/icons/Tango/32x32/actions/go-top.png' '%s' '%s'" % (title, text))
 
-def upload(url, params = {}, cookies = '', headers = []): # 1 - headers; 2 - body
+def upload(url, params = {}, cookies = '', headers = [], auth = ''):
     if params == {}:
         return urllib2.urlopen(url).read()
     else:
@@ -39,6 +39,7 @@ def upload(url, params = {}, cookies = '', headers = []): # 1 - headers; 2 - bod
             curl.setopt(pycurl.POSTFIELDS, urlencode(data))
         curl.setopt(pycurl.COOKIE, cookies)
         curl.setopt(pycurl.HTTPHEADER, headers)
+        curl.setopt(pycurl.USERPWD, auth)
         text = StringIO()
         curl.setopt(pycurl.WRITEFUNCTION, text.write)
         curl.perform()
