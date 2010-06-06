@@ -7,3 +7,6 @@
 3) yamaps.py - определяет координаты заданноо объекта.
    ./yamaps.py OBJECT
    Зависимости: pycurl
+4) twitter.py - отправляет сообщение в Twitter.
+   ./twitter.py -u USERNAME -p PASSWORD MESSAGE
+   Зависимости: pycurl

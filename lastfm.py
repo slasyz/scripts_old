@@ -1,13 +1,10 @@
 #!/usr/bin/python
 # coding: utf-8
 
-#http://ws.audioscrobbler.com/2.0/\?method\=group.getMembers\&api_key\=e44f024998b4ccf7215bbc4242a2d00a\&group\=Juick.com
-
 from functions import *
 from urllib2 import HTTPError
 from xml.dom.minidom import parseString
 from urllib import unquote_plus
-
 import sys
 
 API_KEY = 'e44f024998b4ccf7215bbc4242a2d00a' # Last.FM
@@ -61,6 +58,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print('Выход по Ctrl+C.')
+        print(u'Выход по Ctrl+C.')
     except HTTPError:
-        print('Группы или пользователя не существует.')
+        print(u'Группы или пользователя не существует.')
