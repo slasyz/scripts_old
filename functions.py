@@ -11,7 +11,7 @@ from StringIO import StringIO
 
 def upload(url, params = {}, cookies = '', headers = [], auth = '', part = 2): # 1 - headers, 2 - body
     curl = pycurl.Curl()
-    curl.setopt(pycurl.URL, url)
+    curl.setopt(pycurl.URL, str(url))
     if params != {}:
         curl.setopt(pycurl.POST, 1)
         data = []
