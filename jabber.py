@@ -2,7 +2,6 @@
 # coding: utf-8
 
 import os, sys, xmpp
-from functions import *
 from optparse import OptionParser
 
 def main():

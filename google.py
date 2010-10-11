@@ -2,7 +2,7 @@
 # coding: utf-8
 
 import sys, json, urllib
-from urllib2 import HTTPError
+from urllib2 import urlopen, HTTPError
 from functions import upload
 
 if len(sys.argv) < 3:
@@ -15,7 +15,7 @@ TEXT = ' '.join(sys.argv[2:])
 def main():
     results = []
     for i in xrange(COUNT / 4 + 1):
-        res = upload('http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=%s&start=%i' % (urllib.quote(TEXT), i*4))
+        res = urlopen('http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=%s&start=%i' % (urllib.quote(TEXT), i*4)).read()
         json_res = json.loads(res)
         results += json_res['responseData']['results']
 

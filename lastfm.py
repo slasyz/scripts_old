@@ -1,28 +1,27 @@
 #!/usr/bin/python
 # coding: utf-8
 
-from functions import *
-from urllib2 import HTTPError
-from xml.dom.minidom import parseString
+from urllib2 import urlopen, HTTPError
 from urllib import unquote_plus
+from xml.dom.minidom import parseString
 import sys
 
 API_KEY = 'e44f024998b4ccf7215bbc4242a2d00a' # Last.FM
 
 def get_members(group):
-    xml = upload('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s'%(API_KEY, group))
+    xml = urlopen('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s'%(API_KEY, group)).read()
     obj = parseString(xml)
     num = int(obj.getElementsByTagName('members')[0].getAttribute('totalPages'))
     rc = []
     for page in xrange(num):
-        xml = upload('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s&page=%s'%(API_KEY, group, page))
+        xml = urlopen('http://ws.audioscrobbler.com/2.0/?method=group.getMembers&api_key=%s&group=%s&page=%s'%(API_KEY, group, page)).read()
         obj = parseString(xml)
         for node in obj.getElementsByTagName('name'):
             rc.append(node.childNodes[0].data)
     return rc
     
 def get_score(user1, user2):
-    xml = upload('http://ws.audioscrobbler.com/2.0/?method=tasteometer.compare&api_key=%s&limit=0&type1=user&type2=user&value1=%s&value2=%s'%(API_KEY, user1, user2))
+    xml = urlopen('http://ws.audioscrobbler.com/2.0/?method=tasteometer.compare&api_key=%s&limit=0&type1=user&type2=user&value1=%s&value2=%s'%(API_KEY, user1, user2)).read()
     return parseString(xml).getElementsByTagName('score')[0].childNodes[0].data
 
 if len(sys.argv) < 4:

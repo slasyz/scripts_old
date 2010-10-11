@@ -1,12 +1,27 @@
 #!/usr/bin/python
 # coding: utf-8
 
-from functions import upload
-from urllib2 import HTTPError
+import pycurl
 from optparse import OptionParser
+from urllib import urlencode
+from urllib2 import HTTPError
+from StringIO import StringIO
 
 class TooLong(Exception): pass
 class AuthError(Exception): pass
+
+def upload(url, params = {}, auth = ''):
+    curl = pycurl.Curl()
+    curl.setopt(pycurl.URL, str(url))
+    curl.setopt(pycurl.POST, 1)
+    curl.setopt(pycurl.POSTFIELDS, urlencode(params))
+    curl.setopt(pycurl.USERPWD, auth)
+    text = StringIO()
+    curl.setopt(pycurl.WRITEFUNCTION, text.write)
+    curl.perform()
+    
+    code = curl.getinfo(pycurl.HTTP_CODE)
+    return text.getvalue()
 
 def main():
     parser = OptionParser()

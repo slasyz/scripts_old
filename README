@@ -9,13 +9,14 @@
    ./yamaps.py OBJECT
 
 4) twitter.py - отправляет сообщение в Twitter.
+   Зависит от python-pycurl
    ./twitter.py -u USERNAME -p PASSWORD MESSAGE
 
 5) translate.py - переводит слова/фразы/предложения с помощью Google Translate.
    ./translate.py ORIGIN_LANG DEST_LANG TEXT
 
 6) jabber.ru - отправляет сообщение по джабберу на определённый джид
-   ./jabber.py -j bots@jabber.ru -p password -r recipient@jabber.ru text of message
+   Зависит от python-xmpp
+   ./jabber.py -j bot@jabber.ru -p password -r recipient@jabber.ru text of message
    echo 'сообщение' | ./jabber.py -j bots@jabber.ru -p password -r recipient@jabber.ru
 
->> P.S.: каждый скрипт зависит от python-pycurl
