@@ -6,7 +6,7 @@ from urllib2 import urlopen, HTTPError
 from functions import upload
 
 if len(sys.argv) < 3:
-    print('Недостаточно параметров.\n./google.py COUNT TEXT')
+    print('Not enough parameters.\n./google.py COUNT TEXT')
     exit()
     
 COUNT = int(sys.argv[1])
@@ -27,6 +27,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
     except HTTPError:
-        print(u'Ошибка!')
+        print(u'Error!')

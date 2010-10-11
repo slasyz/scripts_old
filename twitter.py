@@ -40,16 +40,16 @@ def main():
     if len(text) > 140:
         raise TooLong()
     res = upload('http://twitter.com/statuses/update.xml', {'status': text}, auth = '%s:%s' % (args.username, args.password))
-    print(u'Сообщение отправлено.')
+    print(u'Message sent.')
 
 if __name__ == '__main__':
     try:
         main()
     except TooLong:
-        print(u'Сообщение слишком большое (максимальная длина - 140 символов)')
+        print(u'Message is too long (maximum length - 140 symbols)')
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
     except AuthError:
-        print(u'Требуется имя пользователя, пароль и текст сообщения.')
+        print(u'Script needs username, password and text of message.')
     except HTTPError:
-        print(u'Ошибка!')
+        print(u'HTTP Error!')

@@ -6,7 +6,7 @@ from urllib import quote
 from urllib2 import urlopen, HTTPError
 
 if len(sys.argv) < 3:
-    print(u'Недостаточно параметров.\n./translate.py ORIGIN_LANG DEST_LANG TEXT')
+    print(u'Not enough parameters.\n./translate.py ORIGIN_LANG DEST_LANG TEXT')
     exit()
 
 def main():
@@ -22,11 +22,11 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
     except IndexError:
-        print(u'Перевод невозможен.')
+        print(u'Translate is impossible.')
     except TypeError:
-        print(u'Неправильный язык.')
+        print(u'Wrong language.')
     except HTTPError:
-        print(u'Ошибка!')
+        print(u'HTTP Error!')
 

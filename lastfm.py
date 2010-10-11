@@ -25,7 +25,7 @@ def get_score(user1, user2):
     return parseString(xml).getElementsByTagName('score')[0].childNodes[0].data
 
 if len(sys.argv) < 4:
-    print('Недостаточно параметров.\n./lastfm.py USER GROUP COUNT')
+    print('Not enough parameters.\n./lastfm.py USER GROUP COUNT')
     exit()
 
 def main():
@@ -57,6 +57,6 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
     except HTTPError:
-        print(u'Группы или пользователя не существует.')
+        print(u'User or group don\'t exists.')

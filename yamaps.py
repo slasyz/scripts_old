@@ -21,10 +21,10 @@ def get_coordinats(query):
 if __name__ == '__main__':
     try:
         long, lat = get_coordinats(OBJECT)
-        print(u'Объект "%s":\nДолгота: %s;\nШирота: %s.' % (OBJECT.decode('UTF-8'), long, lat))
+        print(u'Object "%s":\nLong: %s;\nLat: %s.' % (OBJECT.decode('UTF-8'), long, lat))
     except IndexError:
-        print(u'Объект "%s" не найден.' % OBJECT.decode('UTF-8'))
+        print(u'Object "%s" not found.' % OBJECT.decode('UTF-8'))
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
     except HTTPError:
-        print(u'Ошибка!')
+        print(u'HTTP Error!')

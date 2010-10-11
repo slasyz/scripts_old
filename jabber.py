@@ -35,4 +35,4 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print(u'Выход по Ctrl+C.')
+        print(u'Exit by Ctrl+C.')
