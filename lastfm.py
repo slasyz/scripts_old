@@ -59,4 +59,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print(u'Exit by Ctrl+C.')
     except HTTPError:
-        print(u'User or group don\'t exists.')
+        print(u'User or group doesn\'t exist.')
